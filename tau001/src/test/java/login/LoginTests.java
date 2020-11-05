@@ -20,4 +20,4 @@ public class LoginTests extends BaseTests {
             .contains("You logged into a secure area!"), 
             "Alert text is incorrect");
     }
-}
+} 
