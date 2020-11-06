@@ -7,7 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.WebDriverWait;
+// import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Wait;
 
 public class DynamicLoadingExample1Page {
 
@@ -31,7 +32,7 @@ public class DynamicLoadingExample1Page {
         /**
          * just to try fluent wait
          */
-        FluentWait wait = new FluentWait(driver)
+        Wait<WebDriver> wait = new FluentWait<>(driver)
             .withTimeout(Duration.ofSeconds(5))
             .pollingEvery(Duration.ofSeconds(1))
             .ignoring(NoSuchElementException.class);
