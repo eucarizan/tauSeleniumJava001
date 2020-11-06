@@ -12,17 +12,17 @@ import pages.HomePage;
 public class BaseTests {
 
     private WebDriver driver;
-    // private String url = "https://the-internet.herokuapp.com";
+    private String url = "https://the-internet.herokuapp.com";
     // Run D:\SampleApps\the-internet-master
-    private String lurl = "http://127.0.0.1:9292/";
+    // private String lurl = "http://127.0.0.1:9292/";
     protected HomePage homePage;
 
     @BeforeClass
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "tau001/rss/chromedriver.exe");
         driver = new ChromeDriver();
-        driver.get(lurl);
-        // driver.get(url);
+        // driver.get(lurl);
+        driver.get(url);
         /*try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {

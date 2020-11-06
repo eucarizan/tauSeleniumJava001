@@ -23,8 +23,16 @@ public class AlertsPage {
         driver.findElement(triggerConfirmButton).click();
     }
 
-    public void acceptAlert(){
+    public void alert_clickToAccept(){
         driver.switchTo().alert().accept();
+    }
+
+    public void alert_clickToDismiss(){
+        driver.switchTo().alert().dismiss();
+    }
+
+    public String alert_getText(){
+        return driver.switchTo().alert().getText();
     }
 
     public String getResult(){
