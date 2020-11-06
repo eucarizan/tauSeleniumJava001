@@ -66,14 +66,28 @@ public class HomePage {
         return new DynamicLoadingPage(driver);
     }
 
+    public LargeAndDeepDomPage clickLargeAndDeepDom(){
+        clickLink("Large & Deep DOM");
+        return new LargeAndDeepDomPage(driver);
+    }
+
+    public InfiniteScrollPage clickInfiniteScroll(){
+        clickLink("Infinite Scroll");
+        return new InfiniteScrollPage(driver);
+    }
+
     private void clickLink(String linkText){
         // driver.findElement(By.linkText(linkText)).click();
         WebElement ele = driver.findElement(By.linkText(linkText));
         try {
             ele.click();
         } catch (Exception ElementNotInteractableException) {
-            JavascriptExecutor executor = (JavascriptExecutor)driver;
-            executor.executeScript("arguments[0].click();", ele);
+            // old style
+            // JavascriptExecutor executor = (JavascriptExecutor)driver;
+            // executor.executeScript("arguments[0].click();", ele);
+
+            // new style
+            ((JavascriptExecutor)driver).executeScript("arguments[0].click()", ele);
         }
         
     }
