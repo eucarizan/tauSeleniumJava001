@@ -9,6 +9,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -50,13 +51,15 @@ public class BaseTests {
     }
 
     @AfterMethod
-    public void takeScrenshot() {
-        var camera = (TakesScreenshot) driver;
-        File screenshot = camera.getScreenshotAs(OutputType.FILE);
-        try {
-            Files.move(screenshot, new File("tau001\\rss\\screenshots\\test.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void recordFailure(ITestResult result) {
+        if(ITestResult.FAILURE == result.getStatus()){
+            var camera = (TakesScreenshot) driver;
+            File screenshot = camera.getScreenshotAs(OutputType.FILE);
+            try {
+                Files.move(screenshot, new File("tau001\\rss\\screenshots\\" + result.getName() + ".png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         // System.out.println("Screenshot taken: " + screenshot.getAbsolutePath());
     }
