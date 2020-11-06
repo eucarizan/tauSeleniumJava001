@@ -12,7 +12,7 @@ public class FramesPage {
     }
 
     public NestedFramesPage clickNestedFrames(){
-        driver.findElement(By.linkText("Nested Frames").click();
+        driver.findElement(By.linkText("Nested Frames")).click();
         return new NestedFramesPage(driver);
     }
 }

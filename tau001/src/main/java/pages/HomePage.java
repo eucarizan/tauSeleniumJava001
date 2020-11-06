@@ -36,8 +36,8 @@ public class HomePage {
     }
 
     public AlertsPage clickJavaScriptAlerts(){
-        // clickLink("JavaScript Alerts");
-        forceClick("JavaScript Alerts");
+        clickLink("JavaScript Alerts");
+        // forceClick("JavaScript Alerts");
         return new AlertsPage(driver);
     }
 
@@ -59,6 +59,11 @@ public class HomePage {
     public FramesPage clickFramesPage(){
         clickLink("Frames");
         return new FramesPage(driver);
+    }
+
+    public DynamicLoadingPage clickDynamicLoading(){
+        clickLink("Dynamic Loading");
+        return new DynamicLoadingPage(driver);
     }
 
     private void clickLink(String linkText){
