@@ -1,11 +1,11 @@
 package alerts;
 
 import org.testng.annotations.Test;
-import static org.testng.Assert.assertEquals;
-
 import base.BaseTests;
 
-public class AlertTests extends BaseTests{
+import static org.testng.Assert.assertEquals;
+
+public class AlertTests extends BaseTests {
     
     @Test
     public void testAcceptAlert(){
@@ -30,10 +30,9 @@ public class AlertTests extends BaseTests{
         var alertsPage = homePage.clickJavaScriptAlerts();
         alertsPage.triggerPrompt();
         
-
         String text = "TAU rocks!";
         alertsPage.alert_setInput(text);
         alertsPage.alert_clickToAccept();
-        assertEquals(alertsPage.getResult(), "You entered: " + text, "Reslts text incorrect");
+        assertEquals(alertsPage.getResult(), "You entered: " + text, "Results text incorrect");
     }
 }

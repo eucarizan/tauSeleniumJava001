@@ -36,7 +36,8 @@ public class HomePage {
     }
 
     public AlertsPage clickJavaScriptAlerts(){
-        clickLink("JavaScript Alerts");
+        // clickLink("JavaScript Alerts");
+        forceClick("JavaScript Alerts");
         return new AlertsPage(driver);
     }
 
@@ -48,18 +49,38 @@ public class HomePage {
 	public ContextMenuPage clickContextMenu() {
         clickLink("Context Menu");
 		return new ContextMenuPage(driver);
-	}
+    }
+    
+    public WysiwygEditorPage clickWysiwygEditor(){
+        clickLink("WYSIWYG Editor");
+        return new WysiwygEditorPage(driver);
+    }
+
+    public FramesPage clickFramesPage(){
+        clickLink("Frames");
+        return new FramesPage(driver);
+    }
 
     private void clickLink(String linkText){
+        // driver.findElement(By.linkText(linkText)).click();
         WebElement ele = driver.findElement(By.linkText(linkText));
         try {
             ele.click();
         } catch (Exception ElementNotInteractableException) {
-            scrollDownToElement(ele);
-            ele.click();
+            JavascriptExecutor executor = (JavascriptExecutor)driver;
+            executor.executeScript("arguments[0].click();", ele);
         }
         
     }
+    /**
+     * FORCE CLICK HAHA
+     * @param linkText
+     */
+    // private void forceClick(String linkText){
+    //     WebElement ele = driver.findElement(By.linkText(linkText));
+    //     JavascriptExecutor executor = (JavascriptExecutor)driver;
+    //     executor.executeScript("arguments[0].click();", ele);
+    // }
 
     public void scrollDownToElement(WebElement element) {
 		js.executeScript("arguments[0].scrollIntoView();", element);
