@@ -41,7 +41,7 @@ public class BaseTests {
         // driver = new ChromeDriver();
         driver = new EventFiringWebDriver(new ChromeDriver(getChromeOptions()));
         driver.register(new EventReporter());
-        goHome();
+        // goHome();
         // setCookie();
         // driver.get(lurl);
         // driver.get(url);
